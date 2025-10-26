@@ -5,8 +5,13 @@ const axios = require('axios');
 const API_ENDPOINT = process.env.API_ENDPOINT || 'https://api.example.com/endpoint';
 
 /**
- * Determines the frequency based on current hour
- * Priority order: 24, 12, 6, 4, 3, 2, 1
+ * Determines the frequency based on the current hour.
+ *
+ * The function checks the input hour against a series of divisibility conditions in a specific priority order: 24, 12, 6, 4, 3, 2, and defaults to 1.
+ * It returns a string representing the frequency based on the highest priority condition met.
+ *
+ * @param hour - The current hour as a number.
+ * @returns A string indicating the frequency based on the input hour.
  */
 function getFrequency(hour) {
   if (hour % 24 === 0) return '24x';
@@ -19,7 +24,11 @@ function getFrequency(hour) {
 }
 
 /**
- * Calls the API with the appropriate frequency parameter
+ * Calls the API with the appropriate frequency parameter.
+ *
+ * This function retrieves the current hour and determines the frequency using the getFrequency function.
+ * It then makes an API call to the specified API_ENDPOINT with the frequency as a query parameter.
+ * The function handles both successful responses and errors, logging relevant information to the console.
  */
 async function callAPI() {
   try {
