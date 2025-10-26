@@ -14,7 +14,7 @@ COPY . .
 
 # Set environment variables (can be overridden at runtime)
 ENV NODE_ENV=production
-ENV API_ENDPOINT=https://api.example.com/endpoint
+ENV API_ENDPOINT=https://cloud.blackbox.ai/api/cron/execute
 
 # Run the application
 CMD ["node", "index.js"]

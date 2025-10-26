@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const axios = require('axios');
 
 // Placeholder API endpoint - replace with your actual endpoint
-const API_ENDPOINT = process.env.API_ENDPOINT || 'https://api.example.com/endpoint';
+const API_ENDPOINT = process.env.API_ENDPOINT || 'https://cloud.blackbox.ai/api/cron/execute';
 
 /**
  * Determines the frequency based on current hour
@@ -46,12 +46,6 @@ async function callAPI() {
     }
   }
 }
-
-// Schedule the job to run at the start of every hour
-cron.schedule('0 * * * *', () => {
-  console.log('Cron job triggered');
-  callAPI();
-});
 
 // Call immediately on startup for testing
 console.log('Cron job scheduler started');
